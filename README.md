@@ -1,7 +1,7 @@
 # enhanced-sails-blueprints
 ---
 
-These blueprints have been extracted from one of my other projects [Backbone.Sails](https://github.com/oscarhaggerty/Backbone.Sails). During the development of that plugin, I did my utmost best to avoid having to touch the server-side. However, the default sails blueprints (as of v0.10) are a quickly put together set of endpoints which don't seem to have been tested much (in particular, with the [resourceful socket events](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub)).
+These blueprints have been extracted from one of my other projects [Backbone.Sails](https://github.com/oscarhaggerty/Backbone.Sails). During the development of that plugin, I did my utmost best to avoid having to touch the server-side. However, the default sails blueprints (as of v0.10) didn't support all the features I wanted & didn't seem to have been tested much with the [resourceful socket events](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub).
 
 ## Some problems which arose...
 
@@ -15,7 +15,7 @@ These blueprints have been extracted from one of my other projects [Backbone.Sai
 
 * The `sort` criteria could only be a simple string (`"name ASC"`) when passed as a query parameter. This limits your ability to do a primary sort **and** a secondary sort. *These blueprints* allow you to pass JSON describing the sort criteria, allowing you to sort on however many attributes you wish. For example `'GET /user?sort={"lName": 1, "fName": 1}'` would sort by last name ascending, and then first name ascending.
 
-* **There is no populate criteria**. That's right folks, the best you can do is specify *which attributes* to populate, and sails would then go ahead and populate those, using the default limit for associated collections (30 by default). This is a real pain, suppose I wanted all the books associated to a library beginning with "L" through get request to library? Not do-able. Well... now you can with enhanced-sails-blueprints. Simply pass `'populate'` as a query parameter, and send down a JSON describing the *criteria* (see waterline github repo) you would like to populate with...
+* **There is no populate criteria**. That's right folks, the best you can do is specify *which attributes* to populate, and sails would then go ahead and populate those, using the default limit for associated collections (30 by default). This is a real pain, suppose I wanted all the books associated to a library beginning with "L" through get request to library? Not do-able. Well... now you can with enhanced-sails-blueprints. Simply pass `'populate'` as a query parameter, and send down a JSON describing the *criteria* (see [waterline](https://github.com/balderdashy/waterline-docs/blob/master/query-language.md) github repo) you would like to populate with...
   
   `'GET /library?populate={ "books": {"where": { "name": { "startsWith": "L" }, "limit": 5000 } } }'`
 
@@ -51,7 +51,7 @@ You need these blueprints!
 
 ## Ok, so how do I install them?
 
-* Clone the repo or download the [zip](https://github.com/oscarhaggerty/enhanced-sails-blueprints/blob/master/blueprints/blueprints.zip)
+* Clone the repo or download the [zip](https://github.com/oscarhaggerty/enhanced-sails-blueprints/blob/master/blueprints.zip)
 * Copy the `/blueprints` folder to your `/api` folder
 * Install [lodash](https://lodash.com/) and [bluebird](https://github.com/petkaantonov/bluebird) on your server side
   * `npm install lodash --save`
