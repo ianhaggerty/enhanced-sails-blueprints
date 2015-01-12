@@ -1,0 +1,29 @@
+{
+  "name": "enhanced-sails-blueprints",
+  "version": "0.1.0",
+  "description": "Enhanced restful blueprints for Sails. Fixes a myriad of various bugs, adds support for self-referencing many-to-many associations, performs faster (for the most part).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sails",
+    "blueprints",
+    "rest",
+    "restful",
+    "crud",
+    "socket",
+    "sockets",
+    "comet",
+    "association",
+    "associations"
+  ],
+  "author": "Oscar Haggerty",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.6.2",
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.12.0",
+    "lodash": "^2.4.1"
+  }
+}
